@@ -65,11 +65,33 @@ fn main() -> anyhow::Result<()> {
 }
 ```
 
-## Create a problem instance
-
 ## Initial decisions
 
-After creating our instance of the knapsack problem, we have to build the run. Our `Run` uses
+In general when setting up an evolutionary computation system, We have to decide:
+
+- What is our representation for the problem?
+  - We typically want to implement some problem-specific type, like `Knapsack` in this example, that encapsulates the details of a problem instance.
+  - It's also useful to be able to create instances of the problem, often from files. Here `Knapsack::from_file_path()` creates an instance of `Knapsack` based on data in the given file.
+- What is our representation for solutions?
+  - In this case it will be fixed length `Bitstring` from `ec-linear`.
+- We have to implement some kind of scoring, which will typically be problem specific.
+  - We're using `CliffScorer` in this example.
+- We need to have some kind of selection.
+  - To keep things simple, we'll just use `Tournament` selection here.
+  - We'll start with binary tournaments, but you might want to increase the tournament size, especially if you have large populations.
+  - If your problem naturally generates a collection of values (scores or errors), then you might consider using `Lexicase` selection.
+- We need to have a mutator and crossover; presumably something from `ec-linear` will do.
+  - We'll use `WithOneOverLength` for mutation and
+  - `UniformXo` for crossover.
+- We also need to choose simple values like population size and max number of generations.
+  - We'll use 1,000 for both values here, but those are quite arbitrary choices.
+
+We also need a specific instance of the problem that we want to try to solve, and might need to create a
+file with the appropriate representation of that problem instance.
+
+## Creating a run
+
+Assuming we have an instance of the knapsack problem, `knapsack`, we have to build the run. Our `Run` uses
 the _builder pattern_ which allows us to specify the various values and properties a run must
 have and then assemble the final complete `Run`. In our example this looks like:
 
@@ -108,21 +130,6 @@ have and then assemble the final complete `Run`. In our example this looks like:
         // Now that we've specified all the elements, we can build the run.
         .build();
 ```
-
-We have to decide:
-
-- What instance of the knapsack problem are we trying to solve?
-  - We might need to create a file with the appropriate representation of that problem instance.
-- What is our representation for solutions? In this case it will be fixed length `Bitstring` from `ec-linear`.
-- We have to implement some kind of scoring (that will be problem specific)
-- We need to have some kind of selection
-  - It's not obvious how to use `Lexicase` selection, so we'll probably just use `Tournament` selection. Maybe binary or possibly larger tournaments if we large population sizes.
-- We need to have a mutator and crossover; presumably something from `ec-linear` will do.
-  - `WithOneOverLength` for mutation
-  - `UniformXo` for crossover
-- We also need simple like population size and max number of generations, but these don't need to happen until runtime.
-
-We also need a specific instance of the problem that we want to try to solve.
 
 ## STUFF STILL TO-DO
 
