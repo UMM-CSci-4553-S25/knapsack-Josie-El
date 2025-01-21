@@ -110,9 +110,9 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "course-helpers"
-version = "0.2.0"
+version = "0.3.2"
 source = "registry+https://github.com/UMM-CSci-4553-S25/registry.git"
-checksum = "26956a08f6833d00a46824eaaf4ee0f5f11b0bf05b1bc87e9dddaec9f48a60bd"
+checksum = "80cf711bbc6e7a4ec869eac06007495aacf6903989a1d8215a03c299cb9982fe"
 dependencies = [
  "anyhow",
  "bon",

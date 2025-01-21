@@ -37,7 +37,25 @@ We also added the `test_case` library which simplifies certain testing patterns.
 cargo add test_case
 ```
 
-## Implement `Knapsack`
+We need the `rand` crate since evolutionary computation generates a lot of random
+numbers. For complex reasons not really relevant, we're currently a specific beta
+version of the `rand` crate, so we have to explicitly specify that version when we
+add the crate. (Hopefully v0.9 will be released shortly, at which point we can drop
+the specification of the particular beta version.)
+
+```bash
+cargo add rand@0.9.0-beta.3
+```
+
+## Structure of the implementation
+
+Now that we have a basic file structure, there are two major pieces that need to be implemented:
+
+- The project itself (in our case the knapsack problem)
+- The `main()` function which will construct and run an instance of the evolutionary system,
+  outputting some sort of result
+
+### Implement `Knapsack`
 
 For whatever problem you're trying to solve, you'll have to implement a model of that problem.
 In this case, that is the type `Knapsack` and its helper type `Item`. In this example, those
@@ -49,7 +67,9 @@ stuck while trying to implement a new problem.
 
 - [ ] Add documentation to `Knapsack` and `Item`.
 
-## Have `main` return `anyhow::Result`
+### Implement `main`
+
+#### Have `main` return `anyhow::Result`
 
 To simplify the error handling, we want `main` to return `anyhow::Result<()>`, which essentially
 says that `main` can return either the unit type `()` if successful, or any error type using the `?`
@@ -85,6 +105,8 @@ In general when setting up an evolutionary computation system, We have to decide
   - `UniformXo` for crossover.
 - We also need to choose simple values like population size and max number of generations.
   - We'll use 1,000 for both values here, but those are quite arbitrary choices.
+- What do we need to record and/or collect as each generation proceeds?
+  - In this example we'll print out the best individual in each generation, and save the best individual from across the entire run.
 
 We also need a specific instance of the problem that we want to try to solve, and might need to create a
 file with the appropriate representation of that problem instance.
@@ -127,13 +149,19 @@ have and then assemble the final complete `Run`. In our example this looks like:
         // and `Overloaded` otherwise.  This is implemented so that `Overloaded` is
         // always worse than any `Score(v)` value.
         .scorer(CliffScorer::new(knapsack))
+        // Add an inspector. This is a function that is called after each generation
+        // and can be used to collect and/or print out information about the run. We'll use this to
+        // print out the best score in each generation, and to keep track of the best score in the run.
+        .inspector(|generation_number, population| {
+            report_on_generation(generation_number, population, &mut best_in_run, &mut rng);
+        })
         // Now that we've specified all the elements, we can build the run.
         .build();
 ```
 
 ## STUFF STILL TO-DO
 
-- [ ] Add `rand` crate
+- [X] Add `rand` crate
 - [ ] How to implement scoring
 - [ ] How to choose/implement different mutators, recombinators, selectors
 
