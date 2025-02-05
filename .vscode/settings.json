@@ -3,5 +3,6 @@
         "Bitstring",
         "Lexicase",
         "recombinator"
-    ]
+    ],
+    "workbench.editor.enablePreviewFromCodeNavigation": true
 }
