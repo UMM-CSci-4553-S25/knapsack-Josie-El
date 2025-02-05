@@ -45,10 +45,14 @@ fn report_on_generation(
 
 fn main() -> anyhow::Result<()> {
     let mut rng = rand::rng();
-    let file_path = "knapsacks/big.txt";
+    const TOURNAMENT_SIZE: usize = 2; // edit tournament size here
+    let file_path = "knapsacks/tiny.txt"; // edit knapsack here
     let knapsack = Knapsack::from_file_path(file_path)?;
 
     let mut best_in_run = None;
+
+    println!("Running on knapsack at: {file_path:?}");
+    println!("Running with tournament size: {TOURNAMENT_SIZE:?}");
 
     let run = Run::builder()
         // The number of bits should equal the number of items.
@@ -62,7 +66,7 @@ fn main() -> anyhow::Result<()> {
         // random from the population, and then chooses the better of the two from this
         // tournament. You can change this to larger tournaments by changing `2` to your
         // desired tournament size.
-        .selector(Tournament::of_size::<2>())
+        .selector(Tournament::of_size::<TOURNAMENT_SIZE>())
         // How do we want to mutate individual knapsack solutions? This flips
         // on average one bit, thereby adding or removing one item from the solution.
         .mutator(WithOneOverLength)
