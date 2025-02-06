@@ -3,6 +3,6 @@
 for run_num in {1..30} #should be 30
 do
     echo "This is run number $run_num"
-    cargo run --release knapsack_from_scratch > ./Outputs/ts_2_pID_Sm2/output_$run_num.txt
+    cargo run --release knapsack_from_scratch > ./Outputs/ts_2_pID_Big1/output_$run_num.txt
     # update `ts_2_pID_Tiny` in above line with correct info
 done
