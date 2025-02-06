@@ -14,10 +14,12 @@ We are running on Rust (DEAP)
 We are going to run two small capacity knapsacks and two large
 The specific ones are:
 
--
--
--
--
+File Name | Origin | Seed Data
+----------|--------|-----------
+BigProblem3.txt | BigProblem1.txt with adjusted capacity | ?
+BigProblem4.txt | BigProblem2.txt with adjusted capacity | ?
+SmallProblem3.txt | SmallProblem1.txt with adjusted capacity | ?
+SmallProblem4.txt | SmallProblem2.txt with adjusted capacity | ?
 
 They are generated from [this code](https://github.com/JorikJooken/knapsackProblemInstances/tree/master).
 
