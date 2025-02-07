@@ -34,7 +34,7 @@ We plan to collect the best overall legal value and best legal final value.
 
 We will collect it in a [google spreadsheet](https://docs.google.com/spreadsheets/d/1-jJcc_ciIstQLY3AB9haknGzVyXA9n3BpGcqxdgunGY/edit?usp=sharing).
 
-We will share our information as a [google spreadsheet](https://docs.google.com/spreadsheets/d/1-jJcc_ciIstQLY3AB9haknGzVyXA9n3BpGcqxdgunGY/edit?usp=sharing).
+We will share our information as an RMD file.
 
 We will run this Tuesday night(2/4/25) in the secondary computer science lab on four computers.
 Both of us will be there running 2 computers each. Josie will step out for a meeting at some point.
