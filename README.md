@@ -42,3 +42,11 @@ Both of us will be there running 2 computers each. Josie will step out for a mee
 ## Misc Notes
 
 Use `% cargo run --release` and `% cargo build --release` to reduce run time. Run out of target/release/--- directory.
+
+### How to Run Trials
+
+### To Extract Info From Output Files
+
+Enter the folder where your target outputs are (the directory should like `main/outputs/ts_*_pID_*`)
+
+To the the overall best score from a trial can be obtained using ``
