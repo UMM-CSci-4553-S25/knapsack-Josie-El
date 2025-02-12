@@ -45,8 +45,8 @@ fn report_on_generation(
 
 fn main() -> anyhow::Result<()> {
     let mut rng = rand::rng();
-    const TOURNAMENT_SIZE: usize = 2; // edit tournament size here
-    let file_path = "knapsacks/tiny.txt"; // edit knapsack here
+    const TOURNAMENT_SIZE: usize = 8; // edit tournament size here
+    let file_path = "knapsacks/SmallProblem4.txt"; // edit knapsack here
     let knapsack = Knapsack::from_file_path(file_path)?;
 
     let mut best_in_run = None;
