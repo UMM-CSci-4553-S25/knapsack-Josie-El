@@ -6,11 +6,11 @@ by Josie and El
 
 The knapsack problem is a style of puzzle where you are given a knapsack and a list of items to put in the sack. The sack has a set capacity(usually measured in weight) and each item is assigned a size and a value. The goal of the problem is to find the best combination of items to optimize the value in the bag while remaining under or at capacity.
 
-## Variables Altered
+## Variables
 
 Our study is looking to see how tournament size effects the overall best and final best scores given by our program. We are testing this on tournament sizes 2 and 8. One additional variable we are changing is the knapsack seeds. We are running each trial on four different seeds. Two seeds have a capacity of 10 billion and 25 thousand items to pick from. The other two have a capacity of 10 thousand and five thousand items to pick from.
 
-Our knapsack seeds can be found in [our repository](https://github.com/UMM-CSci-4553-S25/knapsack-Josie-El) under the knapsacks folder in the following files: BigProblem3.txt, BigProblem4.txt, SmallProblem3.txt, and SmallProblem4.txt.
+Our knapsack seeds can be found in [our repository](https://github.com/UMM-CSci-4553-S25/knapsack-Josie-El) under the knapsacks folder in the following files: BigProblem3.txt, BigProblem4.txt, SmallProblem3.txt, and SmallProblem4.txt. We used [this code](https://github.com/JorikJooken/knapsackProblemInstances/tree/master) to generate these knapsack problems. We used the parameters {capacity: , itmes: , --} for the big problems and {capacity: , itmes: , --} for the small ones. From those parameters we got the seeds that are stored in the knapsack folder under the names: BigProblem1.txt, BigProblem2.txt, SmallProblem1.txt, and SmallProblem2.txt. We attempted to run our study on these seeds, but too many of the scores were "Overloaded", so we altered the capacity of the sack to be 10 billion and 10 thousand. The capacity of the large sacks was taken from the seed titled big.txt. The capacity of the small seeds was chosen because it was the first reasonably small capacity we found that did not return "Overloaded" for the majority of the runs.
 
 Here is a list of variables we are not changing:
 
@@ -26,9 +26,11 @@ We are using a framework called unhindered-ec which runs in Rust.
 The framework can be found at: [https://github.com/unhindered-ec/unhindered-ec](https://github.com/unhindered-ec/unhindered-ec).  
 The code we altered can be found at: [https://github.com/UMM-CSci-4553-S25/knapsack-ga](https://github.com/UMM-CSci-4553-S25/knapsack-ga).
 
-## Experiential Design
+## Experimental Design
 
 We are running each tournament size on each knapsack seed 30 times. This totals to 240 runs. After each run we recorded the overall best score and the best legal score of the last generation.
+
+We ran these tests over several days and three separate machines (two lab computers and one laptop). We did not attempt to run all of the trials in identical ways because our results were not related to time.
 
 ## Summary
 
