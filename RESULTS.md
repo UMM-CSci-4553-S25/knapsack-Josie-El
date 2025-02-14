@@ -1,4 +1,4 @@
-# Tournament Size in the Knapsack Problem
+# Tournament Size and the Knapsack Problem
 
 by Josie and El
 
@@ -6,11 +6,11 @@ by Josie and El
 
 The knapsack problem is a style of puzzle where you are given a knapsack and a list of items to put in the sack. The sack has a set capacity(usually measured in weight) and each item is assigned a size and a value. The goal of the problem is to find the best combination of items to optimize the value in the bag while remaining under or at capacity.
 
-(maybe explain how the algorithm works?)
-
 ## Variables Altered
 
-Our study is looking to see how tournament size effects the overall best and final best scores given by our program. We are testing this on tournament sizes 2 and 8. One additional variable we are changing is the knapsack seeds. We are running each trial on four different seeds. Two seeds have a capacity of 10 billion and 25 thousand items. The other two have a capacity of 10 thousand and five thousand items.
+Our study is looking to see how tournament size effects the overall best and final best scores given by our program. We are testing this on tournament sizes 2 and 8. One additional variable we are changing is the knapsack seeds. We are running each trial on four different seeds. Two seeds have a capacity of 10 billion and 25 thousand items to pick from. The other two have a capacity of 10 thousand and five thousand items to pick from.
+
+Our knapsack seeds can be found in [our repository](https://github.com/UMM-CSci-4553-S25/knapsack-Josie-El) under the knapsacks folder in the following files: BigProblem3.txt, BigProblem4.txt, SmallProblem3.txt, and SmallProblem4.txt.
 
 Here is a list of variables we are not changing:
 
@@ -20,13 +20,15 @@ Here is a list of variables we are not changing:
 - Generation size (1,000)
 - How we make children (Uniform Crossover)
 
-Somewhere you'll want to be sure to tell us which framework you're using. That can be as simple as a sentence or even a footnote, but it needs to be in there somewhere.
+The scoring system used is pretty straightforward. If the weight of the sack is over the capacity it is assigned a value of "Overloaded". All values marked "Overloaded" are equally poor and are set to be smaller than the lowest legal score. If the weight is at or under capacity then the score is the combined value of the items in the sack.
+
+We are using a framework called unhindered-ec which runs in Rust.  
+The framework can be found at: [https://github.com/unhindered-ec/unhindered-ec](https://github.com/unhindered-ec/unhindered-ec).  
+The code we altered can be found at: [https://github.com/UMM-CSci-4553-S25/knapsack-ga](https://github.com/UMM-CSci-4553-S25/knapsack-ga).
 
 ## Experiential Design
 
 We are running each tournament size on each knapsack seed 30 times. This totals to 240 runs. After each run we recorded the overall best score and the best legal score of the last generation.
-
-A description of your experimental design, including things like the different values you're going to set the knobs to
 
 ## Summary
 
